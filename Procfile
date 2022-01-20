@@ -1,0 +1,1 @@
+web: gunicorn sns-newest.wsgi --log-file -

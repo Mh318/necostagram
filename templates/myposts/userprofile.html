@@ -1,0 +1,48 @@
+<<<<<<< HEAD
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+   <div class="content-wrapper">
+       <div class="container-fluid">
+           <div class="row">
+				<div class="card-body">
+					{% for item in object_list %}
+						<tr class="text">
+							{% if accounts_user.id == profile.owner_id %}
+							<td class="text">
+								<h3>{{ item.owner }}'s Profile</h3>
+								<hr>
+								<img class="rounded img-fluid mx-auto d-block" src="{{ item.avatar.url }}" style="width:300px;height: 200px">
+							</td>
+							<td class="text"><h5>{{ item.prof }}</h5></td>
+							{% endif %}
+					{% endfor %}
+				</div>
+           </div>
+       </div>
+   </div>
+=======
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+   <div class="content-wrapper">
+       <div class="container-fluid">
+           <div class="row">
+				<div class="card-body">
+					{% for item in object_list %}
+						<tr class="text">
+							{% if accounts_user.id == profile.owner_id %}
+							<td class="text">
+								<h3>{{ item.owner }}'s Profile</h3>
+								<hr>
+								<img class="rounded img-fluid mx-auto d-block" src="{{ item.avatar.url }}" style="width:300px;height: 200px">
+							</td>
+							<td class="text"><h5>{{ item.prof }}</h5></td>
+							{% endif %}
+					{% endfor %}
+				</div>
+           </div>
+       </div>
+   </div>
+>>>>>>> cf12ca6 (at my mac)
+{% endblock %}

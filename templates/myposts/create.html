@@ -1,0 +1,70 @@
+<<<<<<< HEAD
+{% extends 'base.html' %}
+{% block content %}
+   <div class="content-wrapper">
+       <div class="container-fluid">
+           <div class="row">
+               <div class="col-sm-6 offset-sm-3">
+                   {#  views.pyからmessagesが渡された場合にのみメッセージを表示させる。#}
+                   {% if messages %}
+                       {% for message in messages %}
+                           {#   message/tagsはSettings.pyで設定している#}
+                           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                               {{ message }}
+                           </li>
+                       {% endfor %}
+                   {% endif %}
+                   <div class="card">
+                       <div class="card-header">
+                           <h4><b>New Post</b></h4>
+                       </div>
+                       <div class="card-body">
+                           <form method="POST" class="post-form" enctype="multipart/form-data">
+                               {% csrf_token %}
+                               {% bootstrap_form form %}
+                               <button type="submit" class="btn btn-outline-primary btn-block">
+                                   Post!
+                               </button>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+=======
+{% extends 'base.html' %}
+{% block content %}
+   <div class="content-wrapper">
+       <div class="container-fluid">
+           <div class="row">
+               <div class="col-sm-6 offset-sm-3">
+                   {#  views.pyからmessagesが渡された場合にのみメッセージを表示させる。#}
+                   {% if messages %}
+                       {% for message in messages %}
+                           {#   message/tagsはSettings.pyで設定している#}
+                           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                               {{ message }}
+                           </li>
+                       {% endfor %}
+                   {% endif %}
+                   <div class="card">
+                       <div class="card-header">
+                           <h4><b>New Post</b></h4>
+                       </div>
+                       <div class="card-body">
+                           <form method="POST" class="post-form" enctype="multipart/form-data">
+                               {% csrf_token %}
+                               {% bootstrap_form form %}
+                               <button type="submit" class="btn btn-outline-primary btn-block">
+                                   Post!
+                               </button>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+>>>>>>> cf12ca6 (at my mac)
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+   <div class="content-wrapper">
+       <div class="container-fluid">
+           <!--ページタイトル-->
+           <div class="card mb-3">
+               <div class="card-header">
+                   <h4><b>Find Posts</b></h4>
+					<!-- 検索フォーム -->
+
+					<div class="d-flex justify-content-left">
+						<form class="form-inline my-2" method="GET" action="{% url 'myposts:findposts' %}">
+							<input type="text" class="form-control" name="keyword">
+							<button type="submit" value="search" class="btn btn-primary">検索</button>
+						</form>
+					</div>
+
+					<!-- 検索フォーム -->
+					
+				</div>
+
+               <!-- <div class="card-body">
+				{% if messages %}
+				<ul class="messages">
+				  {% for message in messages %}
+					<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+					  "{{ message }}" を含む検索結果:
+					</li>
+				  {% endfor %}
+				</ul>
+				{% endif %}
+		   -->
+                   <!-- テーブル表の定義 -->
+				   <hr>
+				   <tbody>
+					{% for item in object_list %}
+						<tr class="text">
+							<td class="text"><h6><img class="rounded img-fluid mx-auto d-block" src="{{ item.photo.url }}" style="width:200px;height: 200px;">
+							 {{ item.pub_date }}</h6>{{ item.comment }}</td>
+							<td class="text-center align-middle">
+								{#  pkを指定する際は、urlタグはやや特殊な書き方となる↓以下参照#}
+								<a class="btn btn-outline-success btn-sm"
+								   href="{% url 'myposts:update' item.pk %}"
+								   role="button">Update</a>
+								<a class="btn btn-outline-danger btn-sm"
+								   href="{% url 'myposts:delete' item.pk %}"
+								   role="button">Delete</a>
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+                   {#   django-bootstrap4のページネーション#}
+                   {% bootstrap_pagination page_obj extra=request.GET.urlencode %}
+               </div>
+           </div>
+       </div>
+   </div>
+{% endblock %}
