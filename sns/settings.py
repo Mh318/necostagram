@@ -89,10 +89,10 @@ WSGI_APPLICATION = 'sns.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db6egd13koq60q',
-		'USER': 'nuynfrcfgzwlog',
-		'PASSWORD': '98a5f36c08125e7b202f95032c7fdf03a5f3658460779712c356096cdc91cd47',
-		'HOST': 'ec2-3-225-41-234.compute-1.amazonaws.com',
+        'NAME': 'd9q41ted892o3k',
+		'USER': 'ifxtmmivbvrllw',
+		'PASSWORD': '96055db9950bd97676aa8d70d6e89fcfc986df6afcc59fd3a8d10475d90d47cb',
+		'HOST': 'ec2-18-234-17-166.compute-1.amazonaws.com',
 		'PORT': '5432',        
     }
 }
