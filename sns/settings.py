@@ -31,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
 
 #修正　'.herokuapp.app'　→ 'updatedsnsapp.herokuapp.com'
-ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.app','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com','localhost']
 
 
 # Application definition
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -91,7 +92,7 @@ WSGI_APPLICATION = 'sns.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd9q41ted892o3k',
 		'USER': 'ifxtmmivbvrllw',
 		'PASSWORD': '96055db9950bd97676aa8d70d6e89fcfc986df6afcc59fd3a8d10475d90d47cb',
