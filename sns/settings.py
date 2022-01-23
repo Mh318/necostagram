@@ -31,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
 
 #修正　'.herokuapp.app'　→ 'updatedsnsapp.herokuapp.com'
-ALLOWED_HOSTS = ['127.0.0.1','updatedsnsapp.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.app','localhost']
 
 
 # Application definition
