@@ -1,1 +1,1 @@
-web: gunicorn sns-newest.wsgi --log-file -
+web: gunicorn sns.wsgi --log-file -

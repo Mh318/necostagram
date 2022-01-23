@@ -184,10 +184,10 @@ if not DEBUG:
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
 DATABASES['default'].update(db_from_env)
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME'  : 'hy1khlpxs',
-    'API_KEY' : '576282828111838',
-    'API_SECRET' : 'zy7-b5Z9mAhR5z0Sb-2tm0oZ0OA',
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME'  : 'hy1khlpxs',
+#     'API_KEY' : '576282828111838',
+#     'API_SECRET' : 'zy7-b5Z9mAhR5z0Sb-2tm0oZ0OA',
+# }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
