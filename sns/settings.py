@@ -41,12 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'accounts',  # 追加
     'myposts', # 追加
     'bootstrap4', # 追加
     'imagekit',
-    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -153,7 +154,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIAFILES_DIRLS = (
     os.path.join(BASE_DIR,'media')
 )
-DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
 
 IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
 IMAGE_URL = '/images/','/avatar/'
@@ -185,7 +185,9 @@ db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
 DATABASES['default'].update(db_from_env)
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME'  : 'your_cloud_name',
-#    'API_KEY' : 'env('CLOUDINARY_API_KEY')',
-#    'API_SECRET' : 'CLOUDINARY_API_SECRET',
+    'CLOUD_NAME'  : 'hy1khlpxs',
+    'API_KEY' : '576282828111838',
+    'API_SECRET' : 'zy7-b5Z9mAhR5z0Sb-2tm0oZ0OA',
 }
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
