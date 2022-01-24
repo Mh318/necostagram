@@ -23,12 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'k*9t%-rev*(7+vxxky#t!%0z8k!%%!f)+5pn8wc+bcu5_ik0#o'
-
-
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #修正　'.herokuapp.app'　→ 'updatedsnsapp.herokuapp.com'
 ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com','localhost']
@@ -152,6 +149,7 @@ PASSWORD_HASHERS = [
 
 # 追加 mediaを扱うための設定
 MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIAFILES_DIRLS = (
     os.path.join(BASE_DIR,'media')
@@ -186,10 +184,8 @@ if not DEBUG:
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
 DATABASES['default'].update(db_from_env)
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME'  : 'hy1khlpxs',
-#     'API_KEY' : '576282828111838',
-#     'API_SECRET' : 'zy7-b5Z9mAhR5z0Sb-2tm0oZ0OA',
-# }
-
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME'  : 'hy1khlpxs',
+    'API_KEY' : '576282828111838',
+    'API_SECRET' : 'zy7-b5Z9mAhR5z0Sb-2tm0oZ0OA',
+}
