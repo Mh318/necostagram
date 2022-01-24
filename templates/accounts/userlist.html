@@ -31,9 +31,9 @@
                                    <td class="text-center" style="width: 20%">
                                     {# ユーザーがプロフィール画像を持っている場合#}
                                     {% if item.avatar %}
-                                    <p id="avatar-thumbnail" alt="avatar_thumbnail">{% cloudinary item.avatar.name  %}</p>
-                                    <!-- <img  src="{{ item.avatar.url }}"
-                                    id="avatar-thumbnail" alt="avatar_thumbnail"> -->
+                                    <img  src="https://res.cloudinary.com/hy1khlpxs/image/upload/c_fill,h_100,w_100/v1/{{ item.avatar.name }}"
+                                    id="avatar-thumbnail" alt="avatar_thumbnail">
+                                    
                                     {# ユーザーがプロフィール画像を持ってない場合は”avatar_thumbnailを表示 #}
                                     {% else %}
                                    <img class="rounded img-fluid mx-auto d-block" alt="avatar_thumbnail">
