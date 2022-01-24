@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load cloudinary %}
 {% block content %}
    <div class="content-wrapper">
        <div class="container-fluid">
@@ -30,7 +31,8 @@
                                    <td class="text-center" style="width: 20%">
                                     {# ユーザーがプロフィール画像を持っている場合#}
                                     {% if item.avatar %}
-                                   <img  src="{{ item.avatar.url }}"
+                                    {% cloudinary item.avatar.name  %}
+                                    <!-- <img  src="{{ item.avatar.url }}" -->
                                     id="avatar-thumbnail" alt="avatar_thumbnail">
                                     {# ユーザーがプロフィール画像を持ってない場合は”avatar_thumbnailを表示 #}
                                     {% else %}
