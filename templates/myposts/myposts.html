@@ -13,8 +13,9 @@
                        <div class="card-body">
                            {# ユーザーがプロフィール画像を持っている場合#}
                            {% if user.avatar %}
-                               <img class="rounded img-fluid mx-auto d-block"
-                                   src="{{ user.avatar.url }}" id="avatar-image" alt="avatar_image">
+                           <p id="avatar-image" alt="avatar_image">{% cloudinary user.avatar.name  %}</p>
+                           <!-- <img class="rounded img-fluid mx-auto d-block"
+                                   src="{{ user.avatar.url }}" id="avatar-image" alt="avatar_image"> -->
                                {# ユーザーがプロフィール画像を持っている場合はデフォルト画像を表示#}
                            {% else %}
                                <img class="rounded img-fluid mx-auto d-block"

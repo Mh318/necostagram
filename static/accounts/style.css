@@ -13,3 +13,11 @@
 	border-radius: 20%;
 	border: 1px solid #eee;
  }
+
+ #photo {
+	 display: flex;
+	 align-items: center;
+	 width: auto;
+	 justify-content: center;
+	/* object-fit: contain; */
+}
