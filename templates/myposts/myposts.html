@@ -14,7 +14,7 @@
                        <div class="card-body">
                            {# ユーザーがプロフィール画像を持っている場合#}
                            {% if user.avatar %}
-                           {% cloudinary user.avatar.name width='auto' crop='lfill' responsive='true' height='auto' fetch_format="auto" %}
+                            {% cloudinary user.avatar.name width='auto' crop='lfill' responsive='true' height='auto' fetch_format="auto" %}
                            <!-- <img src="https://res.cloudinary.com/hy1khlpxs/image/upload/c_fill,h_300,w_300/v1/{{ user.avatar.name }}" id="avatar-image" alt="avatar_image"> -->
                                {# ユーザーがプロフィール画像を持っている場合はデフォルト画像を表示#}
                            {% else %}
