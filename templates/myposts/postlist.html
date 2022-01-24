@@ -15,8 +15,9 @@
                         </thead>
                         <tbody>
                             <tr><th>
-                                <div class="card-body" id="photo"><img class="rounded img-fluid mx-auto d-block" src="{% cloudinary item.photo.name %}" 
-                                    style="display:flex;align-items: center;width: auto;justify-content: center;"></th>
+                                <div class="card-body" id="photo">{% cloudinary item.photo.name  %}</div>
+                                <!-- <div class="card-body" id="photo"><img class="rounded img-fluid mx-auto d-block" src="{{ item.photo.url }}" 
+                                    style="display:flex;align-items: center;width: auto;justify-content: center;"></th> -->
                             </tr>
                             <tr>
                                 <th>
