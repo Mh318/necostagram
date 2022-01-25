@@ -15,7 +15,7 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <!-- テーブル表の定義 -->
 				{# デフォルトはobject_listとなるが、view.pyでcontextとして指定#}
                 {% for item in object_list %}
@@ -27,7 +27,7 @@
                         <tbody>
                             <tr><th>
                                 <div class="card-body" id="photo"><img class="rounded img-fluid mx-auto d-block" src="{{ item.photo.url }}" 
-                                    style="display:flex;align-items: center;width: auto;justify-content: center;"></th>
+                                    style="display:flex;align-items: center;width: auto;justify-content: center;"></div></th>
                             </tr>
                             <tr>
                                 <th>
@@ -45,12 +45,12 @@
                                         <i class="fa fa-paw" style="color: gray;"></i>
                                         </button>
                                         {% csrf_token %}
-                                    </form></div>
+                                    	</form>
+									</div>
                                     {% endif %}
                                 </th>
                             </tr>
                             <tr><th><h6>{{ item.comment }}</h6></th></tr>
-                            </div>
                             {% endfor %}
                         </tbody>
                     </table>
@@ -58,7 +58,6 @@
                 {#   django-bootstrap4のページネーション#}
                 {% bootstrap_pagination page_obj extra=request.GET.urlencode %}
             </div>
-
         </div>
     </div>
 </div>
