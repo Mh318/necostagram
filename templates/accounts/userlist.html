@@ -57,16 +57,16 @@
                                     {# ユーザー（item）がfollowlingリストにある場合（お気に入り登録されている場合） #}
                                     {% if item in following_list %}
                                     <form action="{% url 'accounts:rm_relation' pk=item.id %}" method="post">
-                                        <button type="submit" class="btn btn-outline-danger btn-sm" name="button">
-                                        Unfollow
+                                        <button type="submit" class="btn btn-outline-secondary btn-sm" name="button">
+                                        Following
                                         </button>
                                     {% csrf_token %}
                                     </form>
                                     {# ユーザーがfollowlingリストない場合（お気に入り登録されていない場合）#}
                                     {% else %}
                                     <form action="{% url 'accounts:mk_relation' pk=item.id %}" method="post">
-                                        <button type="submit" class="btn btn-outline-primary btn-sm" name="button">
-                                        Follow
+                                        <button type="submit" class="btn btn-primary btn-sm" name="button">
+                                         Follow 
                                         </button>
                                     {% csrf_token %}
                                     </form>

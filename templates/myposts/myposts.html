@@ -66,9 +66,9 @@
                                        {{ item.comment }}</td>
                                    <td class="text-center align-middle">
                                        {#  pkを指定する際は、urlタグはやや特殊な書き方となる↓以下参照#}
-                                       <a class="btn btn-outline-success btn-sm"
+                                       <a class="btn btn-outline-dark btn-sm"
                                           href="{% url 'myposts:update' item.pk %}"
-                                          role="button">Update</a>
+                                          role="button">Update</a><br>
                                        <a class="btn btn-outline-danger btn-sm"
                                           href="{% url 'myposts:delete' item.pk %}"
                                           role="button">Delete</a>
