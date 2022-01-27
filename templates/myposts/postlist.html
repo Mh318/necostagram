@@ -4,6 +4,14 @@
 <div class="content-wrapper">
     <div class="container flud">
         <div class="row">
+            <div class="col-sm-4">
+                <form class="form-inline my-2" method="GET" action="{% url 'myposts:postlist' %}" target="kewword">
+                    <input type="text" class="form-control" name="keyword" placeholder="search..." value="{{ request.GET.kewword }}">
+                    <button type="submit" value="search" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-8">
                 <!-- テーブル表の定義 -->
                 {# デフォルトはobject_listとなるが、view.pyでcontextとして指定#}
@@ -43,26 +51,13 @@
                                 </th>
                             </tr>
                             <tr><th><h6>{{ item.comment }}</h6></th></tr>
-                            </div>
-                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
+                {% endfor %}
                 {#   django-bootstrap4のページネーション#}
-                {% bootstrap_pagination page_obj extra=request.GET.urlencode %}
+                {% bootstrap_pagination page_obj extra=request.GET.urlencode %}    
             </div>
-            <aside class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title text-center">search posts</div>
-                    </div>
-                <form class="form-inline my-2" method="GET" action="{% url 'myposts:postlist' %}">
-                   <input type="text" class="form-control" name="keyword" value="{{ request.GET.kewword }}">
-                   <button type="submit" value="search" class="btn btn-primary">検索</button>
-                </form>
-                </div>
-           </aside>
-
         </div>
     </div>
 </div>
