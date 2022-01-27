@@ -50,7 +50,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostListView(LoginRequiredMixin, ListView):
 	template_name = 'myposts/postlist.html'
 	model = Post
-	paginate_by = 5
+	paginate_by = 12
 
 # Postsテーブルの全データを取得するメソッド定義
 # テンプレートでは、object_listとしてreturnの値が渡される
