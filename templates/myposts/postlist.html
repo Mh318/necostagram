@@ -6,8 +6,12 @@
         <div class="row">
             <div class="col-sm-4">
                 <form class="form-inline my-2" method="GET" action="{% url 'myposts:postlist' %}" target="kewword">
-                    <input type="text" class="form-control" name="keyword" placeholder="search..." value="{{ request.GET.kewword }}">
-                    <button type="submit" value="search" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="text" class="form-control" name="keyword" placeholder="search..." value="{{ request.GET.kewword }}">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <button type="submit" value="search" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                    </div>
                 </form>
             </div>
         </div>
