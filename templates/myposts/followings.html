@@ -33,10 +33,10 @@
                         {# ここから、リンク設定とBadgeの設定を変更 #}
                        <li class="nav-item"><a href="{% url 'myposts:following' %}" class="nav-link">Followings
                            {#  following数を表示#}
-                           <span class="badge badge-secondary">{{ following_count }}</span></a></li>
+                           <span class="badge badge-secondary">{{ following_list | length }}</span></a></li>
                        <li class="nav-item"><a href="{% url 'myposts:follower' %}" class="nav-link">Followers
                            {#  follower数を表示#}
-                           <span class="badge badge-secondary">{{ follower_list | length }}</span></a></li>
+                           <span class="badge badge-secondary">{{ follower_count }}</span></a></li>
 						   {# ここまで、リンク設定とBadgeの設定を変更 #}
                    </ul>
                    <!-- テーブル表の定義 -->
