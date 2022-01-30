@@ -156,7 +156,9 @@ MEDIAFILES_DIRLS = (
 )
 
 IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
-IMAGE_URL = '/images/','/avatar/'
+IMAGE_URL = '/images/'
+
+
 
 # 追加 メッセージタグの設定
 MESSAGE_TAGS = {
