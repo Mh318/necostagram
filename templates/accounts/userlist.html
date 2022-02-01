@@ -16,8 +16,8 @@
                            <thead>
                            <tr>
                                <th class="text-center">User</th>
-                               <th class="text-center">Budge</th>
-                               <th class="text-center">Profile</th>
+                               <th class="text-center">User Type</th>
+                               <!-- <th class="text-center">Profile</th> -->
                                <th class="text-center">Follow/Unfollow</th>
                            </tr>
                            </thead>
@@ -26,22 +26,22 @@
                            <tbody>
                            {# デフォルトはobject_listとなるが、view.pyでcontextとして指定することも出来る#}
                            {% for item in object_list %}
-                               <tr class="odd gradeX text-center">
+                               <tr class="odd gradeX">
                                    {# プロフィール画像列 #}
-                                   <td class="text-center" style="width: 20%">
+                                   <td style="width: 50%">
                                     {# ユーザーがプロフィール画像を持っている場合#}
                                     {% if item.avatar %}
-                                    <img  src="https://res.cloudinary.com/hy1khlpxs/image/upload/c_fill,h_100,w_100/v1/{{ item.avatar.name }}"
+                                    <img class="ml-1" src="https://res.cloudinary.com/hy1khlpxs/image/upload/c_fill,h_100,w_100/v1/{{ item.avatar.name }}"
                                     id="avatar-thumbnail" alt="avatar_thumbnail">
                                     
                                     {# ユーザーがプロフィール画像を持ってない場合は”avatar_thumbnailを表示 #}
                                     {% else %}
-                                   <img class="rounded img-fluid mx-auto d-block" alt="avatar_thumbnail">
+                                   <img class="rounded img-fluid mx-auto d-block" alt="アバター未登録">
                                     {% endif %}
-                                    <hr>{{ item.username }}
+                                    {{ item.username }}
                                     </td>
                                     {# 愛猫家/保護猫活動家列 #}
-                                    <td class="text-center style=width: 20%">
+                                    <td class="text-center" style="width: 30%; vertical-align: middle;">
                                     {% if item.cat_lover %}
                                         Cat Lover
                                     {% else %}
@@ -49,11 +49,11 @@
                                     {% endif %}
                                     </td>
 
-                                    {# Profile列 #}
+                                    <!-- {# Profile列 #}
                                     <td class="text-left" style="width: 40%">
-                                        {{ item.profile }}</td>
+                                        {{ item.profile }}</td> -->
                                     {# Follow/Unfollow列 #}
-                                    <td class="text-center" style="width: 20%">     
+                                    <td class="text-center" style="width: 20%; vertical-align: middle;">     
                                     {# ユーザー（item）がfollowlingリストにある場合（お気に入り登録されている場合） #}
                                     {% if item in following_list %}
                                     <form action="{% url 'accounts:rm_relation' pk=item.id %}" method="post">
