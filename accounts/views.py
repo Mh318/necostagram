@@ -51,7 +51,7 @@ def mk_relation(request, pk):
    following = get_object_or_404(User, pk=pk)
    make_relation = Relationship(follower_id=follower.id, following_id=following.id)
    make_relation.save()
-   return redirect('accounts:userlist')
+   return redirect('myposts:myposts')
 
 def rm_relation(request, pk):
    # ログインユーザーを取得
@@ -62,4 +62,4 @@ def rm_relation(request, pk):
    # model.objects.filter(***)でQuetySetを取得し.delete()で削除
    clear_relation = Relationship.objects.filter(follower_id=follower.id, following_id=following.id)
    clear_relation.delete()
-   return redirect('accounts:userlist')
+   return redirect('myposts:myposts')

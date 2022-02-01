@@ -35,29 +35,25 @@
                         <h7>{{ user.profile }}</h7> 
                     </div>
                     <br>
-                    <div class="container">
-                        <div class="row text-center">
-                                <ul class="nav nav-tabs nav-justified">
-                                    <li class="nav-item"><a href="{% url 'myposts:myposts' %}" class="nav-link active">
-                                        {#  object_listのlengthを取得することで投稿数をカウントできる。#}
-                                        <span style="font-weight: bold;">{{ my_posts_count }}</span><br>Posts</a></li>
-                                    {# ここから、リンク設定とBadgeの設定を変更 #}
-                                    <li class="nav-item"><a href="{% url 'myposts:following' %}" class="nav-link">
-                                        {#  フォロワー数を表示#}
-                                        <span style="font-weight: bold;">{{ following_count }}</span><br>Following</a></li>
-                                    <li class="nav-item"><a href="{% url 'myposts:follower' %}" class="nav-link">
-                                        {#  フォロワー数を表示#}
-                                        <span style="font-weight: bold;">{{ follower_count }}</span><br>Followers</a></li>
-                                </ul>
-                        </div>
-                    </div>
+                </div>
             </div>
-        </div>
         </div>
 
         <!-- ここからpostlist表示部分 -->
         <div class="album py-5 bg-light">
             <div class="container">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item"><a href="{% url 'myposts:myposts' %}" class="nav-link active">
+                        {#  object_listのlengthを取得することで投稿数をカウントできる。#}
+                        <span style="font-weight: bold;">{{ my_posts_count }}</span><br>My Posts</a></li>
+                    {# ここから、リンク設定とBadgeの設定を変更 #}
+                    <li class="nav-item"><a href="{% url 'myposts:following' %}" class="nav-link">
+                        {#  フォロワー数を表示#}
+                        <span style="font-weight: bold;">{{ following_count }}</span><br>Following</a></li>
+                    <li class="nav-item"><a href="{% url 'myposts:follower' %}" class="nav-link">
+                        {#  フォロワー数を表示#}
+                        <span style="font-weight: bold;">{{ follower_count }}</span><br>Followers</a></li>
+                </ul>
                 <div class="row">
                     {% for item in object_list %}
                     <div class="col-md-4">

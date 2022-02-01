@@ -21,22 +21,22 @@
                                    src="{% static 'images/avator_default.png' %}" id="avatar-image" alt="avatar_image">
                            {% endif %}
                        </div>
-                       <a class="btn btn-outline-secondary btn-sm"
-                           href="{% url 'accounts:edit_profile' %}" role="button">Edit Profile</a>
+                       <!-- <a class="btn btn-outline-secondary btn-sm"
+                           href="{% url 'accounts:edit_profile' %}" role="button">Edit Profile</a> -->
                    </div>
                </aside>
                <div class="col-sm-8">
-                   <ul class="nav nav-tabs nav-justified mb-3">
-                       <li class="nav-item"><a href="{% url 'myposts:myposts' %}" class="nav-link active">MyPosts List
+                   <ul class="nav nav-tabs nav-justified">
+                       <li class="nav-item"><a href="{% url 'myposts:myposts' %}" class="nav-link active">
                            {#  object_listのlengthを取得することで投稿数をカウントできる。#}
-                           <span class="badge badge-secondary">{{ my_posts_count }}</span></a></li>
+                           <span style="font-weight: bold;">{{ my_posts_count }}</span><br>My Posts List</a></li>
                         {# ここから、リンク設定とBadgeの設定を変更 #}
-                       <li class="nav-item"><a href="{% url 'myposts:following' %}" class="nav-link">Followings
+                       <li class="nav-item"><a href="{% url 'myposts:following' %}" class="nav-link">
                            {#  following数を表示#}
-                           <span class="badge badge-secondary">{{ following_list | length }}</span></a></li>
-                       <li class="nav-item"><a href="{% url 'myposts:follower' %}" class="nav-link">Followers
+                           <span style="font-weight: bold;">{{ following_list | length }}</span><br>Followings</a></li>
+                       <li class="nav-item"><a href="{% url 'myposts:follower' %}" class="nav-link">
                            {#  follower数を表示#}
-                           <span class="badge badge-secondary">{{ follower_count }}</span></a></li>
+                           <span style="font-weight: bold;">{{ follower_count }}</span><br>Followers</a></li>
 						   {# ここまで、リンク設定とBadgeの設定を変更 #}
                    </ul>
                    <!-- テーブル表の定義 -->
@@ -70,7 +70,7 @@
                                    <td class="text-center align-middle">
 									{# Unfollowボタンで対象ユーザーに対して、rm_relation関数を呼び出してお気に入り解除 #}                                        
 									<form action="{% url 'accounts:rm_relation' pk=item.id %}" method="post">
-											<button type="submit" class="btn btn-outline-danger btn-sm" name="button">
+											<button type="submit" class="btn btn-outline-dark btn-sm" name="button">
 												Unfollow
 											</button>
 											{% csrf_token %}
