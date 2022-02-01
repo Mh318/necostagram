@@ -56,14 +56,14 @@
                            <tbody>
 							{# follower_list:自分をお気に入り登録してくれているユーザーのリスト #}
                            {% for item in follower_list %}
-                               <tr class="text">
+                               <tr class="align-middle">
                                    <td>
                                     {% if item.avatar %}
                                    <img class="ml-1" src="{{ item.avatar.url }}"
                                     id="avatar-thumbnail" alt="avatar_thumbnail">
                                     {# ユーザーがプロフィール画像を持ってない場合は”avatar_thumbnailを表示 #}
                                     {% else %}
-                                   <img class="rounded img-fluid ml-1 d-block" alt="avatar_thumbnail">
+                                   <img class="rounded img-fluid ml-1 d-block" alt="none_avatar">
                                     {% endif %}
 									{{ item.username }}
                                    </td>
