@@ -27,14 +27,15 @@
                 <div class="col-sm-4">
                     <section>
                         <div class=""><h3>{{ user.get_username }}</h3></div>
-                        <div><a class="btn btn-outline-secondary btn-sm"
-                            href="{% url 'accounts:edit_profile' %}" role="button">Edit Profile</a></div>
                     </section>
                     <br>
                     <div>
                         <h7>{{ user.profile }}</h7> 
                     </div>
                     <br>
+                    <a class="btn btn-outline-secondary btn-sm"
+                    href="{% url 'accounts:edit_profile' %}" role="button">Edit Profile</a>
+
                 </div>
             </div>
         </div>

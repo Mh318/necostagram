@@ -29,11 +29,11 @@
                    <ul class="nav nav-tabs nav-justified">
                        <li class="nav-item"><a href="{% url 'myposts:myposts' %}" class="nav-link active">
                            {#  object_listのlengthを取得することで投稿数をカウントできる。#}
-                           <span style="font-weight: bold;">{{ my_posts_count }}</span><br>MyPosts List</a></li>
+                           <span style="font-weight: bold;">{{ my_posts_count }}</span><br>My Posts</a></li>
                         {# ここから、リンク設定とBadgeの設定を変更 #}
                        <li class="nav-item"><a href="{% url 'myposts:following' %}" class="nav-link">
                            {#  following数を表示#}
-                           <span style="font-weight: bold;">{{ following_count }}</span><br>Followings</a></li>
+                           <span style="font-weight: bold;">{{ following_count }}</span><br>Following</a></li>
                        <li class="nav-item"><a href="{% url 'myposts:follower' %}" class="nav-link">
                            {#  follower数を表示#}
                            <span style="font-weight: bold;">{{ follower_list | length }}</span><br>Followers</a></li>

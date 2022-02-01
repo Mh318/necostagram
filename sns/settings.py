@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from this import d
 from django.contrib.messages import constants as messages #追加
 from django.contrib.messages import constants as message_constants #追加
 import dj_database_url
@@ -135,10 +136,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
    os.path.join(BASE_DIR, "static"),
-)
+]
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+
 #パスワードのセキュリティーレベルをアップさせるためにBcryptを使用
 PASSWORD_HASHERS = [
    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
@@ -151,7 +157,7 @@ PASSWORD_HASHERS = [
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIAFILES_DIRLS = (
+MEDIAFILES_DIRS = (
     os.path.join(BASE_DIR,'media')
 )
 
