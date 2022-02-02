@@ -57,13 +57,13 @@
 							{# follower_list:自分をお気に入り登録してくれているユーザーのリスト #}
                            {% for item in follower_list %}
                                <tr class="align-middle">
-                                   <td>
+                                   <td class="align-middle">
                                     {% if item.avatar %}
                                    <img class="ml-1" src="{{ item.avatar.url }}"
                                     id="avatar-thumbnail" alt="avatar_thumbnail">
                                     {# ユーザーがプロフィール画像を持ってない場合は”avatar_thumbnailを表示 #}
                                     {% else %}
-                                   <img class="rounded img-fluid ml-1 d-block" alt="none_avatar">
+                                   <img class="ml-1" alt="none_avatar">
                                     {% endif %}
 									{{ item.username }}
                                    </td>
@@ -72,7 +72,7 @@
 										{% if item in following_list %}
 											{# Unfollowボタンで対象ユーザーに対して、rm_relation関数を呼び出してお気に入り解除 #}  
 											<form action="{% url 'accounts:rm_relation' pk=item.id %}" method="post">
-												<button type="submit" class="btn btn-outline-danger btn-sm" name="button">
+												<button type="submit" class="btn btn-outline-dark btn-sm" name="button">
 													Unfollow
 												</button>
 												{% csrf_token %}

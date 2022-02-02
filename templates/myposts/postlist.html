@@ -8,7 +8,7 @@
                 <form class="form-inline my-2" method="GET" action="{% url 'myposts:postlist' %}" target="kewword">
                     <div class="form-group mx-sm-3 mb-2">
                         <!-- 下記タグ内：valueの記載位置はplacdholderより前に書くことで検索キーワードが窓に表示される -->
-                        <input type="text" class="form-control" name="keyword" value="{{ request.GET.kewword }}" placeholder="search...">
+                        <input value="{{ request.GET.kewword }}" type="text" class="form-control" name="keyword" placeholder="search...">
                     </div>
                     <div class="form-group mx-sm-3 mb-2">
                         <button type="submit" value="search" class="btn btn-primary"><i class="fa fa-search "></i></button>
