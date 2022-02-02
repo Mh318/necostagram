@@ -32,10 +32,9 @@
                                 {% if item.avatar %}
                                 <img class="ml-1" src="https://res.cloudinary.com/hy1khlpxs/image/upload/c_fill,h_100,w_100/v1/{{ item.avatar.name }}"
                                 id="avatar-thumbnail" alt="avatar_thumbnail">
-                                
                                 {# ユーザーがプロフィール画像を持ってない場合は”avatar_thumbnailを表示 #}
                                 {% else %}
-                                <img class="ml-1" alt="none avatar">
+                                <img class="ml-1" src="{% static 'images/avator_default.png' %}" alt="none avatar">
                                 {% endif %}
                                 {{ item.username }}
                                 </td>
