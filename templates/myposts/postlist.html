@@ -40,18 +40,20 @@
                             <tr>
                                 <th>
                                     {% if item in favourite_list %}
-                                    <div style="text-align: left;"><form action="{% url 'myposts:rm_favourite' pk=item.pk %}" method="post">
+                                    <div style="text-align: left; display: flex;"><form action="{% url 'myposts:rm_favourite' pk=item.pk %}" method="post">
                                         <button type="submit" class="btn btn-link" name="button">
-                                        <i class="fas fa-paw"></i>
-                                        </button>
+                                        <i class="fas fa-paw" style="display: inline-block;"></i>
+                                        <span style="display: flex; display: inline-block;"><h6 class="text-muted"> {{ item.meow_count }}</h6></span>
+                                    </button>
                                         {% csrf_token %}
                                         </form>
                                     {% else %}
                                         {#  object_listの要素をitemとして取り出しているので、item.pkでpk取得#}
                                         <form action="{% url 'myposts:add_favourite' pk=item.pk %}" method="post">
                                         <button type="submit" class="btn btn-link" name="button">
-                                        <i class="fa fa-paw" style="color: gray;"></i>
-                                        </button>
+                                        <i class="fa fa-paw" style="color: gray; display: inline-block;"></i>
+                                        <span style="display: flex; display: inline-block;"><h6 class="text-muted"> {{ item.meow_count }}</h6></span>
+                                    </button>
                                         {% csrf_token %}
                                     </form></div>
                                     {% endif %}

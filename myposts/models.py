@@ -27,6 +27,7 @@ class Gallery(models.Model):
    def __str__(self):
        return str(self.pk)
 
+#未使用クラス
 class Profile(models.Model):
 	owner = models.ForeignKey('accounts.User', related_name='pfofile_owner', on_delete=models.CASCADE)
 	avatar = models.ImageField(upload_to='avatar/', verbose_name="アイコン画像",blank=True, null=True)  

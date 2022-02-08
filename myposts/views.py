@@ -80,6 +80,8 @@ def add_favourite(request, pk):
    # ログインユーザーをfavoritePostのUser_idとして、post_idは
    # 上で取得したPostを記録
    user.favourite_post.add(post)
+   post.meow_count += 1 #追加
+   post.save() #追加
    return redirect('myposts:postlist')
 
 def remove_favourite(request, pk):
@@ -90,6 +92,8 @@ def remove_favourite(request, pk):
    # ログインユーザーをfavoritePostのUser_idとして、post_idは
    # 上で取得したPostを記録
    user.favourite_post.remove(post)
+   post.meow_count -= 1 #追加
+   post.save()
    return redirect('myposts:postlist')
 
 class PostUpdateView(LoginRequiredMixin, UpdateView): 
