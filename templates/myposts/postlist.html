@@ -29,7 +29,7 @@
                             </th></tr>
                         </thead>
                         <tbody>
-                            <tr><th>
+                            <a href="{% url 'myposts:postdetail' item.pk %}"><tr><th>
                                 <!-- 画像の表示部分 -->
                                 <div class="card-body" id="photo">
                                     <!-- {% cloudinary item.photo.name width='auto' crop='lfill' responsive='true' height='auto' fetch_format="auto" %} -->
@@ -37,7 +37,7 @@
                                      src="https://res.cloudinary.com/hy1khlpxs/image/upload/c_fill,h_500,w_500/v1/{{ item.photo.name }}">
                                 </div>
                             </tr>
-                            <tr>
+                            <tr></a>
                                 <th>
                                     {% if item in favourite_list %}
                                     <div style="text-align: left; display: flex;"><form action="{% url 'myposts:rm_favourite' pk=item.pk %}" method="post">

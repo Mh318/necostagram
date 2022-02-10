@@ -3,7 +3,7 @@ from os import name
 from django.urls import path
 from . import views
 from .views import (
-   PostCreateView, PostListView, PostUpdateView,
+   PostCreateView, PostListView, PostUpdateView,PostDetailView,
    PostDeleteView, MyPostsView,
    FollowingView, FollowersView, GalleryView, 
    ProfileCreateView, ProfileEditView, ProfileDeleteView, UserProfileView
@@ -26,4 +26,6 @@ urlpatterns = [
    path('deleteprofile/<int:pk>',ProfileDeleteView.as_view(),name='deleteprofile'),
    path('userprofile/',UserProfileView.as_view(),name='userprofile'),
    path('findposts/',PostListView.as_view(),name='findposts'),
+   path('postdetail/<int:pk>/', PostDetailView.as_view(), name='postdetail'),
+
 ]

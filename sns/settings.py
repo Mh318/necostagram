@@ -176,7 +176,7 @@ MESSAGE_TAGS = {
 AUTH_USER_MODEL = 'accounts.User'
 
 LOGIN_URL = '/accounts/login'
-LOGIN_REDIRECT_URL = '/accounts/userlist'
+LOGIN_REDIRECT_URL = '/myposts/postlist'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
 try:

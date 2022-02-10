@@ -4,7 +4,7 @@ from django.db.models.fields.files import ImageField
 from django.http import request, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView
-from django.views.generic import ListView, DeleteView
+from django.views.generic import ListView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post, Gallery, Profile
 from .forms import PostCreateForm, PostUpdateForm, ProfileCreateForm, ProfileEditForm #追加
@@ -95,6 +95,25 @@ def remove_favourite(request, pk):
    post.meow_count -= 1 #追加
    post.save()
    return redirect('myposts:postlist')
+
+class PostDetailView(LoginRequiredMixin,DetailView):
+	model = Post 
+	template_name = 'myposts/postdetail.html'
+
+	#いいねの表示
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		user = self.request.user
+		context['favourite_list'] = user.favourite_post.all()
+		return context
+
+	def PostDetail(request, pk):
+		detail = get_object_or_404(Post, pk=pk)
+		
+		context = {
+    	"detail": detail,
+    	"comments": SubComment.objects.filter(target=detail.id)   #該当記事のコメントだけを渡します。
+  		}
 
 class PostUpdateView(LoginRequiredMixin, UpdateView): 
 	model = Post

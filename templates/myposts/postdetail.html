@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="table table-responsive">
+    <table id='post_list' class="table table-striped table-bordered table-hover">
+        <thead>
+                 <tr><th>
+                    <div style="text-align: left; float: left; font-weight: normal;">{{ object.owner }}</div>
+                </th></tr>
+        </thead>
+        <tbody>
+            <tr><th>
+                <div class="card-body" id="photo"><img class="rounded img-fluid mx-auto d-block" src="{{ object.photo.url }}" 
+                    style="display:flex;align-items: center;width: auto;justify-content: center;">
+            </th></tr>
+            <tr><th> 
+                <p style="font-weight: lighter;">{{ object.owner }} : {{ object.comment }}</p>
+                {% if object.detail == True  %}
+                    <p style="font-weight: lighter">《里親募集中》</p>
+                {% endif %}
+                <p style="text-align: left;"><small class="text-muted">{{ object.pub_date }}</small></p>
+            </th></tr>
+            <tr><th>
+                <!-- コメント一覧と、コメントフォーム -->
+                {% for comment in comments %}
+                <div class='border-bottom'>{{ comment.owner }} {{ comment.pub_date }}</div>
+                <div class='mt-2'>{{ comment.subcomment }}</div>
+                {% endfor %}
+                <!-- コメント一覧・コメントフォーム終わり -->
+            </th></tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
