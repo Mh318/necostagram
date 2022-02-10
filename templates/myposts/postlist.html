@@ -29,14 +29,14 @@
                             </th></tr>
                         </thead>
                         <tbody>
-                            <a href="{% url 'myposts:postdetail' item.pk %}"><tr><th>
+                            <tr><th><a href="{% url 'myposts:postdetail' item.pk %}">
                                 <!-- 画像の表示部分 -->
-                                <div class="card-body" id="photo">
+                                    <div class="card-body" id="photo">
                                     <!-- {% cloudinary item.photo.name width='auto' crop='lfill' responsive='true' height='auto' fetch_format="auto" %} -->
                                     <img class="rounded img-fluid mx-auto d-block" style="display:flex;align-items: center;width: auto;justify-content: center;" 
                                      src="https://res.cloudinary.com/hy1khlpxs/image/upload/c_fill,h_500,w_500/v1/{{ item.photo.name }}">
-                                </div>
-                            </tr>
+                                    </div>
+                            </a></th></tr>
                             <tr></a>
                                 <th>
                                     {% if item in favourite_list %}

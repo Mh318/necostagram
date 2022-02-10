@@ -107,13 +107,14 @@ class PostDetailView(LoginRequiredMixin,DetailView):
 		context['favourite_list'] = user.favourite_post.all()
 		return context
 
-	def PostDetail(request, pk):
-		detail = get_object_or_404(Post, pk=pk)
+	# def PostDetail(request, pk):
+	# 	detail = get_object_or_404(Post, pk=pk)
 		
-		context = {
-    	"detail": detail,
-    	"comments": SubComment.objects.filter(target=detail.id)   #該当記事のコメントだけを渡します。
-  		}
+	# 	context = {
+    # 	"detail": detail,
+    # 	"comments": SubComment.objects.filter(target=detail.id)   #該当記事のコメントだけを渡します。
+  	# 	}
+
 
 class PostUpdateView(LoginRequiredMixin, UpdateView): 
 	model = Post
