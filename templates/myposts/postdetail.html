@@ -45,7 +45,7 @@
                     <!-- コメント作成用のURLを渡す -->
                     <form action="{% url 'myposts:comment_create' post.pk %}" method="post">
                       {% csrf_token %}
-                      {% bootstrap_form form %}
+                      {{ form }}                      
                       <div>
                         <button type="submit" value="comment" class="btn btn-primary">Post</button>
                       </div>
