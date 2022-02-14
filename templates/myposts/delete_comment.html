@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+{#    投稿したユーザーしか削除できない制約を追加#}
+   {% if object.owner_id == user.id %}
+       <form method="POST">
+       {% csrf_token %}
+       <p>{{ object.owner }}「{{ object.text }}」({{ object.pub_date}})を削除しますか？</p>
+       <button type="submit" class="btn btn-default btn-danger">
+           Delete
+       </button>
+   </form>
+       {% else %}
+       <h3>{{ user.get_username }}さんの投稿ではありません。</h3>
+   {% endif %}
+{% endblock %}

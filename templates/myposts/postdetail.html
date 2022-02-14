@@ -33,8 +33,9 @@
                 <div class="comment">
                     {% for comment in post.target_post.all %}
                     <div class="comment-text">
-                      <p style="font-weight: lighter;">{{ comment.owner }} : {{ comment.text }}</p>
-                      <p style="font-weight: lighter;"><small>{{ comment.pub_date }}</small></p>
+                      <div style="font-weight: lighter;">{{ comment.owner }} : {{ comment.text }}</div>
+                      <div style="font-weight: lighter;"><small>{{ comment.pub_date }}</small></div>
+                      <div><a style="text-align: left;" class="btn btn-sm btn-outline-danger" href="{% url 'myposts:delete_comment' comment.pk %}" role="button">Delete</a></div>
                     </div>
                     {% endfor %}
                   </div>

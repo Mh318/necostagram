@@ -6,7 +6,7 @@ from .views import (
    PostCreateView, PostListView, PostUpdateView,PostDetailView,
    PostDeleteView, MyPostsView,
    FollowingView, FollowersView, GalleryView, UserProfileView,
-   CommentCreate,
+   CommentCreate,CommentDeleteView
 )
 app_name = 'myposts'
 urlpatterns = [
@@ -23,5 +23,6 @@ urlpatterns = [
    path('add_file/', views.add_file, name='add_file'),
    path('postdetail/<int:pk>/', PostDetailView.as_view(), name='postdetail'),
    path('comment/create/<int:pk>/', CommentCreate.as_view(), name='comment_create'), 
+   path('delete_comment/<int:pk>', CommentDeleteView.as_view(), name='delete_comment'),
    path('userprofile/',UserProfileView.as_view(),name='userprofile'),
 ]

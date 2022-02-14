@@ -117,6 +117,17 @@ class CommentCreate(LoginRequiredMixin,CreateView):
 			form = CommentForm()
 		return render(request, 'myposts/postdetail.html',{'form':form})
 
+class CommentDeleteView(LoginRequiredMixin, DeleteView):
+	model = SubComment
+	template_name = 'myposts/delete_comment.html'
+
+# deleteviewでは、SuccessMessageMixinが使われないので設定する必要あり
+	success_url = reverse_lazy('myposts:postlist')
+	success_message = "コメントは削除されました。"
+# 削除された際にメッセージが表示されるようにする。
+	def delete(self, request, *args, **kwargs):
+		messages.success(self.request, self.success_message)
+		return super(CommentDeleteView, self).delete(request, *args, **kwargs)
 
 def add_favourite(request, pk):
    # postのpkをhtmlから取得
