@@ -1,4 +1,6 @@
-from re import template
+from audioop import reverse
+from ctypes.wintypes import tagRECT
+from re import S, template
 import re
 from django.db.models.fields.files import ImageField
 from django.http import request, HttpResponse
@@ -7,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post, Gallery, Profile,SubComment
-from .forms import PostCreateForm, PostUpdateForm, ProfileCreateForm, ProfileEditForm,CommentForm #追加
+from .forms import PostCreateForm, PostUpdateForm,CommentForm #追加
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.db.models import Q, query
@@ -140,26 +142,6 @@ def remove_favourite(request, pk):
    post.save()
    return redirect('myposts:postlist')
 
-class PostDetailView(LoginRequiredMixin,DetailView):
-	model = Post 
-	template_name = 'myposts/postdetail.html'
-
-	#いいねの表示
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		user = self.request.user
-		context['favourite_list'] = user.favourite_post.all()
-		return context
-
-	# def PostDetail(request, pk):
-	# 	detail = get_object_or_404(Post, pk=pk)
-		
-	# 	context = {
-    # 	"detail": detail,
-    # 	"comments": SubComment.objects.filter(target=detail.id)   #該当記事のコメントだけを渡します。
-  	# 	}
-
-
 class PostUpdateView(LoginRequiredMixin, UpdateView): 
 	model = Post
 	form_class = PostUpdateForm
@@ -287,63 +269,6 @@ class GalleryView(LoginRequiredMixin,ListView):
        qs = Gallery.objects.filter(owner_id=self.request.user)
        return qs
 
-class ProfileCreateView(LoginRequiredMixin, CreateView):
-	template_name = 'myposts/createprofile.html'
-	form_class = ProfileCreateForm
-	success_url = reverse_lazy('myposts:createprofile')
-
-	def form_valid(self, form):
-		# formに問題なければ、owner id に自分のUser idを割り当てる     
-		# request.userが一つのセットでAuthenticationMiddlewareでセットされている。
-		form.instance.owner_id = self.request.user.id
-		messages.success(self.request, 'Done')
-		return super(ProfileCreateView, self).form_valid(form)
-		
-	def form_invalid(self, form):
-		messages.warning(self.request, 'Failed')
-		return redirect('myposts:createprofile')
-
-	def profilePost(request):
-		if request.method == "POST":
-			form = ProfileCreateForm(request.POST)
-			if form.is_valid():
-				post = Profile()
-				print(request)
-				post.avatar = request.FILES['アイコン画像']
-				post.save()
-				return redirect('myposts:myposts')
-		else:
-			form = ProfileCreateForm()
-		return render(request, 'myposts/createprofile.html',{'form':form})
-
-
-class ProfileEditView(LoginRequiredMixin, UpdateView):
-	model = Profile
-	form_class = ProfileEditForm
-	template_name = 'myposts/editprofile.html'
-
-	def form_valid(self, form):
-		messages.success(self.request, '更新が完了しました')
-		return super(ProfileEditView, self).form_valid(form)
-
-	def get_success_url(self):
-		return reverse_lazy('myposts:editprofile', kwargs={'pk': self.object.id})  
-		
-	def form_invalid(self, form):
-		messages.warning(self.request, '更新が失敗しました')
-		return reverse_lazy('myposts:editprofile', kwargs={'pk': self.object.id})
-
-class ProfileDeleteView(LoginRequiredMixin, DeleteView):
-	model = Profile
-	template_name = 'myposts/deleteprofile.html'
-
-# deleteviewでは、SuccessMessageMixinが使われないので設定する必要あり
-	success_url = reverse_lazy('myposts:myposts')
-	success_message = "投稿は削除されました。"
-# 削除された際にメッセージが表示されるようにする。
-	def delete(self, request, *args, **kwargs):
-		messages.success(self.request, self.success_message)
-		return super(ProfileDeleteView, self).delete(request, *args, **kwargs)
 
 class UserProfileView(LoginRequiredMixin,ListView):
 	model = Profile
