@@ -1,7 +1,7 @@
 from django import forms
 from django.db.models import fields
 from django.forms import widgets
-from .models import Post, Profile
+from .models import Post, Profile,SubComment
 
 class PostCreateForm(forms.ModelForm):
    class Meta:
@@ -64,5 +64,20 @@ class ProfileEditForm(forms.ModelForm):
         widgets = {
             'prof':forms.Textarea(
                 attrs={'rows': 10, 'cols': 30,}
+            ),
+        }
+
+class CommentForm(forms.ModelForm):
+    # body=forms.CharField(widget=forms.Textarea(attrs={'class':'input ismedium'}),required=True)
+
+    class Meta:
+        model = SubComment
+        exclude = ('owner','target', 'pub_date')
+        fields = (
+            'text',
+        )
+        widgets = {
+            'comment': forms.Textarea(
+               attrs={'rows': 5, 'cols': 30}
             ),
         }

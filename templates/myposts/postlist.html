@@ -31,32 +31,34 @@
                         <tbody>
                             <tr><th><a href="{% url 'myposts:postdetail' item.pk %}">
                                 <!-- 画像の表示部分 -->
-                                    <!-- <div class="card-body" id="photo"> -->
-                                    <!-- {% cloudinary item.photo.name width='auto' crop='lfill' responsive='true' height='auto' fetch_format="auto" %} -->
                                     <img class="rounded img-fluid mx-auto d-block" style="display:flex;align-items: center;width: 100%;justify-content: center;" 
                                      src="https://res.cloudinary.com/hy1khlpxs/image/upload/c_fill,h_500,w_500/v1/{{ item.photo.name }}">
-                                    <!-- </div> -->
                             </a></th></tr>
-                            <tr></a>
+                            <tr>
                                 <th>
-                                    {% if item in favourite_list %}
-                                    <div style="text-align: left; display: flex;"><form action="{% url 'myposts:rm_favourite' pk=item.pk %}" method="post">
-                                        <button type="submit" class="btn btn-link" name="button">
-                                        <i class="fas fa-paw" style="display: inline-block;"></i>
-                                        <span style="display: flex; display: inline-block;"><h6 class="text-muted"> {{ item.meow_count }}</h6></span>
-                                    </button>
-                                        {% csrf_token %}
-                                        </form>
-                                    {% else %}
-                                        {#  object_listの要素をitemとして取り出しているので、item.pkでpk取得#}
-                                        <form action="{% url 'myposts:add_favourite' pk=item.pk %}" method="post">
-                                        <button type="submit" class="btn btn-link" name="button">
-                                        <i class="fa fa-paw" style="color: gray; display: inline-block;"></i>
-                                        <span style="display: flex; display: inline-block;"><h6 class="text-muted"> {{ item.meow_count }}</h6></span>
-                                    </button>
-                                        {% csrf_token %}
-                                    </form></div>
-                                    {% endif %}
+                                    <div class="icons" style="display: flex;">
+                                        {% if item in favourite_list %}
+                                            <form action="{% url 'myposts:rm_favourite' pk=item.pk %}" method="post">
+                                                <button type="submit" class="btn btn-link" name="button"
+                                                style="padding:0;">
+                                                    <i class="fas fa-paw" ></i>
+                                                    <span><small class="text-muted">{{ item.meow_count }}</small></span>
+                                                </button>
+                                            {% csrf_token %}
+                                            </form>
+                                        {% else %}
+                                            {#  object_listの要素をitemとして取り出しているので、item.pkでpk取得#}
+                                            <form action="{% url 'myposts:add_favourite' pk=item.pk %}" method="post">
+                                                <button type="submit" class="btn btn-link" name="button" style="padding: 0;">
+                                                    <i class="fa fa-paw" style="color: gray;"></i>
+                                                    <span><small class="text-muted"> {{ item.meow_count }}</small></span>
+                                                </button>
+                                            {% csrf_token %}
+                                            </form>
+                                        {% endif %}
+                                        <a href="{% url 'myposts:postdetail' item.pk %}" style="padding-left: 10px;">
+                                            <i class="far fa-comment" style="vertical-align: middle; color: black;"></i></a>
+                                    </div>
                                 </th>
                             </tr>
                             <tr><th>

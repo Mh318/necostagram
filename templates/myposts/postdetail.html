@@ -2,6 +2,15 @@
 {% load static %}
 {% block content %}
 <div class="table table-responsive">
+    {#  views.pyからmessagesが渡された場合にのみメッセージを表示させる。#}
+    {% if messages %}
+        {% for message in messages %}
+            {#   message/tagsはSettings.pyで設定している#}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+        {% endfor %}
+    {% endif %}
     <table id='post_list' class="table table-striped table-bordered table-hover">
         <thead>
                  <tr><th>
@@ -21,14 +30,30 @@
                 <p style="text-align: left;"><small class="text-muted">{{ object.pub_date }}</small></p>
             </th></tr>
             <tr><th>
+                <div class="comment">
+                    {% for comment in post.target_post.all %}
+                    <div class="comment-text">
+                      <p style="font-weight: lighter;">{{ comment.owner }} : {{ comment.text }}</p>
+                      <p style="font-weight: lighter;"><small>{{ comment.pub_date }}</small></p>
+                    </div>
+                    {% endfor %}
+                  </div>
+            </th></tr>
+            <tr><th>
                 <!-- コメント一覧と、コメントフォーム -->
-                {% for comment in comments %}
-                <div class='border-bottom'>{{ comment.owner }} {{ comment.pub_date }}</div>
-                <div class='mt-2'>{{ comment.subcomment }}</div>
-                {% endfor %}
+                <div class="comment-form">
+                    <!-- コメント作成用のURLを渡す -->
+                    <form action="{% url 'myposts:comment_create' post.pk %}" method="post">
+                      {% csrf_token %}
+                      {% bootstrap_form form %}
+                      <div>
+                        <button type="submit" value="comment" class="btn btn-primary">Post</button>
+                      </div>
+                    </form>
+                  </div>
                 <!-- コメント一覧・コメントフォーム終わり -->
             </th></tr>
         </tbody>
     </table>
 </div>
-{% endblock %}
+{% endblock %}mh

@@ -39,3 +39,16 @@ class Profile(models.Model):
 		db_table = 'profiles'
 	def __str__(self):
 		return str(self.pk)
+
+# related_nameは、他クラスから逆参照するときにどのような名前で参照するかを指定しています。
+class SubComment(models.Model):
+	owner = models.ForeignKey('accounts.User', related_name='subcomment_owner', on_delete=models.CASCADE)
+	target = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='target_post')
+	text = models.TextField(max_length=200,verbose_name='comment')
+	pub_date = models.DateTimeField(auto_now_add=True)
+
+	class Meta:
+		db_table = 'SubComment'
+		ordering = ('-pub_date',)
+	def __str__(self):
+		return self.text

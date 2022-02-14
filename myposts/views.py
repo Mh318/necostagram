@@ -6,8 +6,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post, Gallery, Profile
-from .forms import PostCreateForm, PostUpdateForm, ProfileCreateForm, ProfileEditForm #追加
+from .models import Post, Gallery, Profile,SubComment
+from .forms import PostCreateForm, PostUpdateForm, ProfileCreateForm, ProfileEditForm,CommentForm #追加
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.db.models import Q, query
@@ -71,6 +71,50 @@ class PostListView(LoginRequiredMixin, ListView):
 		context['favourite_list'] = user.favourite_post.all()
 
 		return context
+#追加２／１４
+class PostDetailView(LoginRequiredMixin,DetailView):
+	model = Post 
+	template_name = 'myposts/postdetail.html'
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['comments'] = SubComment.objects.all()
+		context['form'] = CommentForm
+		user = self.request.user
+		context['favourite_list'] = user.favourite_post.all()
+		return context
+		
+#追加2/14    """コメント投稿ページのビュー"""
+class CommentCreate(LoginRequiredMixin,CreateView):
+	model = SubComment
+	form_class = CommentForm
+	
+	def form_valid(self, form):
+		form.instance.owner_id = self.request.user.id
+		post_pk = self.kwargs['pk']
+		post = get_object_or_404(Post, pk=post_pk)
+		subcomment = form.save(commit=False)
+		subcomment.target = post
+		subcomment.save()
+		messages.success(self.request, 'Done')
+		return redirect('myposts:postdetail', pk=post_pk)
+ 		
+	def form_invalid(self, form):
+		messages.warning(self.request, 'Failed')
+		return redirect('myposts:postdetail')
+	
+	def newPost(request, target_id):
+		if request.method == "POST":
+			form = CommentForm(request.POST)
+			if form.is_valid():
+				subcomment = form.save(commit=False)
+				subcomment.target = get_object_or_404(SubComment, id=target_id)
+				subcomment.save()
+				return redirect('myposts:postdetail')
+		else:
+			form = CommentForm()
+		return render(request, 'myposts/postdetail.html',{'form':form})
+
 
 def add_favourite(request, pk):
    # postのpkをhtmlから取得

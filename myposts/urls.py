@@ -6,7 +6,8 @@ from .views import (
    PostCreateView, PostListView, PostUpdateView,PostDetailView,
    PostDeleteView, MyPostsView,
    FollowingView, FollowersView, GalleryView, 
-   ProfileCreateView, ProfileEditView, ProfileDeleteView, UserProfileView
+   ProfileCreateView, ProfileEditView, ProfileDeleteView, UserProfileView,
+   CommentCreate,
 )
 app_name = 'myposts'
 urlpatterns = [
@@ -27,5 +28,5 @@ urlpatterns = [
    path('userprofile/',UserProfileView.as_view(),name='userprofile'),
    path('findposts/',PostListView.as_view(),name='findposts'),
    path('postdetail/<int:pk>/', PostDetailView.as_view(), name='postdetail'),
-
+   path('comment/create/<int:pk>/', CommentCreate.as_view(), name='comment_create'),   #追加
 ]
