@@ -71,8 +71,9 @@ class PostListView(LoginRequiredMixin, ListView):
 		context = super().get_context_data(**kwargs)
 		user = self.request.user
 		context['favourite_list'] = user.favourite_post.all()
-
+	
 		return context
+
 #追加２／１４
 class PostDetailView(LoginRequiredMixin,DetailView):
 	model = Post 
@@ -152,6 +153,7 @@ def remove_favourite(request, pk):
    post.meow_count -= 1 #追加
    post.save()
    return redirect('myposts:postlist')
+
 
 class PostUpdateView(LoginRequiredMixin, UpdateView): 
 	model = Post
