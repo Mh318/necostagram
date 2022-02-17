@@ -6,10 +6,27 @@
 	border: 1px solid #eee;
  }
 
- #photo {
-	 display: flex;
-	 align-items: center;
-	 width: auto;
-	 justify-content: center;
-	/* object-fit: contain; */
+ #avatar-image {
+	height: 100px;
+	width: 100px;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 1px solid #eee;
 }
+
+#post-thumbnail {
+	height: 100px;
+	width: 100px;
+	object-fit: cover;
+	border-radius: 20%;
+	border: 1px solid #eee;
+ }
+
+ #avatar {
+	float: left;
+	height: 25px;
+	width: 25px;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 1px solid #eee;
+ }
