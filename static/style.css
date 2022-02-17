@@ -24,9 +24,10 @@
 
  #avatar {
 	float: left;
-	height: 25px;
-	width: 25px;
+	height: 28px;
+	width: 28px;
 	object-fit: cover;
 	border-radius: 50%;
 	border: 1px solid #eee;
+	padding-right: 5px;
  }
