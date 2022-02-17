@@ -6,13 +6,12 @@
            <h1>Welcome to Necostagram</h1>
            <h5>for all cat lovers <i class="fas fa-paw"></i></h5>
            <br>
-           <a class="btn btn-outline-secondary btn-sm"
-                          href="{% url 'accounts:regist' %}"
-                          role="button">Sign in Meow!</a>
-            <br>
-            <a class="btn btn-outline-secondary btn-sm"
-                          href="{% url 'accounts:login' %}"
-                          role="button">Login</a>
-       </div>
+           <p><a class="btn btn-outline-secondary btn-sm"
+                href="{% url 'accounts:regist' %}"
+                role="button">Sign in Meow!</a></p>
+            <p><a class="btn btn-outline-secondary btn-sm"
+            href="{% url 'accounts:login' %}"
+                role="button">Login Meow!</a></p>
+        </div>
    </div>
 {% endblock %}
