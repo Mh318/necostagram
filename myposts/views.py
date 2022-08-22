@@ -268,7 +268,7 @@ def add_file(request):
        # 画像をテンプレートからfileとして取得
        pict = request.FILES.get('file')
        # Galleryモデルにオーナーと画像を保存
-       Gallery.objects.create(owner = user, image=pict)
+       Gallery.objects.create(owner = user, photo=pict)
        return HttpResponse('')
    return HttpResponse('post error')
    

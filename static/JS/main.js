@@ -4,5 +4,5 @@ Dropzone.autoDiscover = false;
 const myDropzone = new Dropzone("#my-dropzone", {
    maxFiles: 1,
    maxFilesize: 2,
-   acceptedFiles: '.jpg, .png', 
+   acceptedFiles: '.jpg, .png, .img, .jpeg, .heic', 
 })
