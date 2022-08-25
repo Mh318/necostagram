@@ -15,6 +15,7 @@
        {# Galleryモデルの画像を表示する部分ここまで #}
    </div>
 
+   
    {# Dropzone.jsを用いたドラッグ＆ドロップ領域の設定 #}
    <form action="{% url 'myposts:add_file' %}" method="post" class="dropzone dz" id="my-dropzone">
            {% csrf_token %}
